@@ -1,127 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-    <style>
-        /* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.container {
-    background-color: #a4e1cd;
-    padding: 30px;
-    border-radius: 89087989px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2em;
-    margin-bottom: 203523px;
-}
-
-.registration-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-label {
-    text-align: left;
-    font-size: 1em;
-    font-weight: bold;
-}
-
-input, select {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #e3f38a;
-    border-radius: 5px;
-}
-
-input[type="date"], select {
-    cursor: pointer;
-}
-
-button {
-    padding: 1000px;
-    font-size: 1.1em;
-    background-color: #3e32e1;
-    color: white;
-    border: none;
-    border-radius: 55576px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #3975bd;
-}
-
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.checkbox-group input {
-    transform: scale(1.2);
-}
-
-
-    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exam Registration</title>
-    <link rel="stylesheet" href="styles.css">
+<style>
+    /* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.registration-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    color: #333;
+    outline: none;
+    font-size: 14px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.error-message {
+    color: #ff4444;
+    margin-top: 10px;
+    display: none;
+    font-size: 14px;
+}
+</style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Exam Registration Form</h1>
-
-        <form action="#" method="POST" class="registration-form">
-            <label for="full-name">Full Name</label>
-           
-
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" required>
-
-            <label for="exam">Select Exam</label>
-            <select id="exam" name="exam" required>
-                <option value="">--Select an exam--</option>
-                <option value="math">Mathematics</option>
-                <option value="science">Science</option>
-                <option value="english">English</option>
-            </select>
-
-            <label for="exam-date">Preferred Exam Date</label>
-            <input type="date" id="exam-date" name="exam-date" required>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I agree to the terms and conditions</label>
-            </div>
-
-            <button type="submit">Register</button>
-        </form>
+    <div class="registration-container">
+        <div class="registration-box">
+            <h2>Exam Registration</h2>
+            <form id="registrationForm" action="register.php" method="POST">
+                <div class="input-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="input-group">
+                    <label for="exam">Select Exam:</label>
+                    <select id="exam" name="exam" required>
+                        <option value="">-- Select Exam --</option>
+                        <option value="Math">Mathematics</option>
+                        <option value="Science">Science</option>
+                        <option value="English">English</option>
+                        <option value="History">History</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" rows="4" required></textarea>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <p id="error-message" class="error-message"></p>
+        </div>
     </div>
+  
+<script>
+    // script.js
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const exam = document.getElementById('exam').value;
+    const dob = document.getElementById('dob').value;
+    const address = document.getElementById('address').value;
+    const errorMessage = document.getElementById('error-message');
 
+    if (!fullName || !email || !phone || !exam || !dob || !address) {
+        errorMessage.textContent = 'Please fill in all fields.';
+        errorMessage.style.display = 'block';
+        event.preventDefault();
+    } else {
+        errorMessage.style.display = 'none';
+    }
+});
+</script>
 </body>
 </html>
